@@ -17,6 +17,7 @@ if len(arguments) > 1:
             os.execl("./Child.py", "Child.py", str(random.randint(5, 15)))
     while len(list_of_pids) > 0:
         pid, exit_status = os.wait()
+        exit_status = exit_status//256
         if pid > 0:
             print(f"Parent[{os.getpid()}]: Child with PID {pid} terminated. Exit Status {exit_status}.")
             list_of_pids.remove(pid)
